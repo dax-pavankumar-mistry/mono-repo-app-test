@@ -33,7 +33,7 @@ export default function Home() {
         />
         <ol>
           <li>
-            This is Docs app <code>apps/docs/app/page.tsx</code>
+            Testing docs <code>apps/docs/app/page.tsx</code>
           </li>
           <li>Save and see your changes instantly.</li>
         </ol>
