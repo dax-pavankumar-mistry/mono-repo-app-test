@@ -1,0 +1,28 @@
+version: 1
+applications:
+  - appRoot: apps/docs
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - yarn install --frozen-lockfile
+        build:
+          commands:
+            - yarn workspace docs build
+      artifacts:
+        baseDirectory: .next
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+          - ../../node_modules/**/*   # yarn workspace cache
+
+    source:
+      buildFilter:
+        include:
+          - apps/docs/**             # only rebuild when docs app changes
+          - packages/ui/**    # shared UI (optional - remove if not used)
+          - packages/config/**       # tsconfig/eslint config (optional)
+        exclude:
+          - apps/web/**              # main web app — do NOT trigger docs deployment
